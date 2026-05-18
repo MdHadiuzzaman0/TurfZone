@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { headers } from "next/headers";
-import { auth } from './lib/auth';
+import { auth } from '@/lib/auth';
 
 export async function proxy(request) {
   const session = await auth.api.getSession({
@@ -13,5 +13,5 @@ export async function proxy(request) {
 }
  
 export const config = {
-  matcher: ['/profile', '/addEvent', "/events/:path+"],
+  matcher: ['/profile', '/myBookings', 'addFacility', 'manageFacilities'],
 }

@@ -1,23 +1,66 @@
-'use client'
+"use client";
+import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { FaGoogle } from "react-icons/fa6";
 import Link from 'next/link';
+import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
-const LoginPage = () => {
-    const handleLogin = (e) => {
+const RegisterPage = () => {
+    const router = useRouter();
+    
+    async function handleRegister(e) {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        // Better Auth বা লগইন লজিক এখানে বসবে
-        console.log({ email, password });
+        const formData = new FormData(e.target);
+        const registerData = Object.fromEntries(formData.entries());
+
+        const { data, error } = await authClient.signUp.email({
+            email: registerData.email,
+            password: registerData.password,
+            name: registerData.name,
+            image: registerData.image,
+        });
+
+        if (error) {
+            toast.error(error.message);
+        } else {
+            toast.success('Registration successful!');
+            router.push('/');
+        }
+    }
+
+    const handleSignInWithGoogle = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/"
+        });
     };
 
     return (
         <div className="min-h-[calc(100vh-68px)] flex items-center justify-center px-4 bg-arenaBg">
-            <div className="w-full max-w-md bg-arenaCard p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-sports font-bold text-center uppercase tracking-wide mb-6">
-                    Login to <span className="text-arenaOrange">ArenaPulse</span>
+            <div className="w-full max-w-md bg-arenaCard p-8 rounded-lg shadow-lg space-y-6">
+                <h2 className="text-3xl font-sports font-bold text-center uppercase tracking-wide text-white">
+                    Create <span className="text-arenaOrange">Account</span>
                 </h2>
 
-                <form onSubmit={handleLogin} className="space-y-4 font-body">
+                {/* Google Sign-In Button */}
+                <Button 
+                    onPress={handleSignInWithGoogle}
+                    type="button"
+                    className="w-full flex items-center justify-center gap-3 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-white font-medium text-sm py-3 px-4 transition-colors"
+                >
+                    <FaGoogle className="w-4 h-4 text-arenaOrange" />
+                    <span>Sign up with Google</span>
+                </Button>
+
+                {/* Divider */}
+                <div className="relative flex items-center justify-center text-xs uppercase text-white/40">
+                    <div className="w-full border-t border-white/10"></div>
+                    <span className="bg-arenaCard px-3 absolute">Or continue with</span>
+                </div>
+
+                <Form onSubmit={handleRegister} className="space-y-4 font-body">
+
                      {/* Email Input */}
                     <div className="space-y-2">
                         <TextField
@@ -32,8 +75,7 @@ const LoginPage = () => {
                             }}
                         >
                             <Label className="text-xs font-mono uppercase tracking-widest text-zinc-400">Email Address</Label>
-                            <div className="flex items-center bg-zinc-900 border border-zinc-800 px-4 py-3 focus-within:border-cyan-500 transition-colors group">
-                                <Mail className="w-4 h-4 text-zinc-600 group-focus-within:text-cyan-500 transition-colors mr-3" />
+                            <div className="flex items-center bg-zinc-900 border border-zinc-800 px-4 py-3 focus-within:border-arenaOrange transition-colors group">
                                 <Input
                                     type="email"
                                     placeholder="name@example.com"
@@ -44,7 +86,7 @@ const LoginPage = () => {
                         </TextField>
                     </div>
 
-                    {/* Password Input*/}
+                    {/* Password Input */}
                     <div className="space-y-2">
                         <TextField
                             isRequired
@@ -64,33 +106,28 @@ const LoginPage = () => {
                                 return null;
                             }}
                         >
-                            <div className="flex justify-between items-center">
-                                <Label isRequired className="text-xs font-mono uppercase tracking-widest text-zinc-400">Password</Label>
-                                <Link href="/signup" className="text-xs text-zinc-500 hover:text-cyan-400 transition-colors">Forgot?</Link>
-                            </div>
-                            <div className="flex items-center bg-zinc-900 border border-zinc-800 px-4 py-3 focus-within:border-cyan-500 transition-colors group">
-                                <Lock className="w-4 h-4 text-zinc-600 group-focus-within:text-cyan-500 transition-colors mr-3" />
+                            <Label isRequired className="text-xs font-mono uppercase tracking-widest text-zinc-400">Password</Label>
+                            <div className="flex items-center bg-zinc-900 border border-zinc-800 px-4 py-3 focus-within:border-arenaOrange transition-colors group">
                                 <Input
                                     type="password"
                                     placeholder="••••••••"
                                     className="bg-transparent outline-none flex-1 text-sm text-white placeholder-zinc-600"
                                 />
-
                             </div>
                             <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                             <FieldError />
                         </TextField>
                     </div>
 
-                    <button type="submit" className="btn bg-arenaOrange hover:bg-opacity-90 border-none text-white w-full font-sports text-xl uppercase tracking-wider mt-4">
-                        Login
-                    </button>
-                </form>
+                    <Button type="submit" className="btn bg-arenaOrange hover:bg-opacity-90 border-none text-white w-full font-sports text-xl uppercase tracking-wider mt-4">
+                        Register
+                    </Button>
+                </Form>
 
                 <p className="text-center font-body text-sm text-white/60 mt-6">
-                    Don't have an account?{' '}
-                    <Link href="/register" className="text-arenaOrange hover:underline font-semibold">
-                        Register here
+                    Already have an account?{' '}
+                    <Link href="/login" className="text-arenaOrange hover:underline font-semibold">
+                        Login here
                     </Link>
                 </p>
             </div>
@@ -98,4 +135,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;
