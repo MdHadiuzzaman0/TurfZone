@@ -3,16 +3,23 @@ import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const NavbarRight = () => {
-    const router = useRouter(); 
-    const { data: session } = authClient.useSession();
+    const router = useRouter();
+    const { data: session, isPending} = authClient.useSession();
+    const user = session?.user;
+
+    if(isPending){
+        return <div>Loading....</div>
+    }
 
     async function logout() {
         await authClient.signOut();
         router.push('/login');
-    }  
+        router.refresh()
+    }
 
     return (
         <div className="navbar-end">
@@ -24,17 +31,16 @@ const NavbarRight = () => {
             )}
 
             <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-ghost text-2xl text-white">
+                <div tabIndex={0} role="button" className="border border-green-600 px-3 py-2 text-2xl">
                     {session ? (
 
-                        <div className="flex items-center gap-2">
-                            <Avatar 
-                                src={session.user.image || undefined} 
-                                name={session.user.name?.charAt(0)} 
-                                size="sm"
-                                className="border border-arenaOrange"
-                            />
-                            <span className="text-sm font-body text-white font-medium">{session.user.name}</span>
+                        <div className="flex items-center gap-2 ">
+                            <Avatar>
+                                <Avatar.Image alt="John Doe" src={user?.image} />
+                                <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
+                            </Avatar>
+                            <span className="text-sm font-body text-white font-medium hover:text-black">{session.user.name}</span>
+                            <RiArrowDropDownLine />
                         </div>
                     ) : (
                         <IoMenu />
@@ -55,9 +61,9 @@ const NavbarRight = () => {
                             <li><Link href="/manageFacilities">My Facilities</Link></li>
 
                             <li className="border-t border-white/10 pt-2 mt-1">
-                                <Button 
-                                    onClick={logout} 
-                                    type="button" 
+                                <Button
+                                    onClick={logout}
+                                    type="button"
                                     className="text-arenaOrange hover:text-red-500 text-left w-full pl-3 bg-transparent border-none justify-start"
                                 >
                                     Logout

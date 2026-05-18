@@ -2,6 +2,7 @@ import { Barlow_Condensed, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/components/Navbar'
 import toast, { Toaster } from 'react-hot-toast';
+import ConditionalPageShow from "@/components/ConditionalPageShow";
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
       <body className="font-body bg-[#122926] text-white antialiased">
         <Navbar/>
         <main>{children}</main>
+        <ConditionalPageShow />
          <Toaster position="top-right" reverseOrder={true}/>
         </body>
     </html>

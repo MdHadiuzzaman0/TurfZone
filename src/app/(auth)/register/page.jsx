@@ -18,17 +18,20 @@ const RegisterPage = () => {
             email: registerData.email,
             password: registerData.password,
             name: registerData.name,
+            image: registerData.image,
         });
+
+        console.log(data)
 
         if (error) {
             toast.error(error.message);
         } else {
             toast.success('Registration successful!');
-            router.push('/');
+            router.push('/login');
         }
     }
 
-    const handleSignInWithGoogle = async () => {
+    const handleSignUpWithGoogle = async () => {
         await authClient.signIn.social({
             provider: "google",
             callbackURL: "/"
@@ -43,7 +46,7 @@ const RegisterPage = () => {
                 </h2>
 
                 <Button
-                    onPress={handleSignInWithGoogle}
+                    onPress={handleSignUpWithGoogle}
                     type="button"
                     className="w-full flex items-center justify-center gap-3 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-white font-medium text-sm py-3 px-4 transition-colors"
                 >

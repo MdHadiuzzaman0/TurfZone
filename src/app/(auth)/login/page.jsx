@@ -6,26 +6,23 @@ import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
-const RegisterPage = () => {
+const LoginPage = () => {
     const router = useRouter();
     
-    async function handleRegister(e) {
+    async function handleLogin(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const registerData = Object.fromEntries(formData.entries());
-
-        const { data, error } = await authClient.signUp.email({
-            email: registerData.email,
-            password: registerData.password,
-            name: registerData.name,
-            image: registerData.image,
+        const loginData = Object.fromEntries(formData.entries());
+        const { data, error } = await authClient.signIn.email({
+            email: loginData.email,
+            password: loginData.password, 
         });
-
         if (error) {
             toast.error(error.message);
         } else {
-            toast.success('Registration successful!');
+            toast.success('Login successful!');
             router.push('/');
+            router.refresh()
         }
     }
 
@@ -40,7 +37,7 @@ const RegisterPage = () => {
         <div className="min-h-[calc(100vh-68px)] flex items-center justify-center px-4 bg-arenaBg">
             <div className="w-full max-w-md bg-arenaCard p-8 rounded-lg shadow-lg space-y-6">
                 <h2 className="text-3xl font-sports font-bold text-center uppercase tracking-wide text-white">
-                    Create <span className="text-arenaOrange">Account</span>
+                    Welcome to Arena<span className="text-arenaOrange italic">Pulse</span>
                 </h2>
 
                 {/* Google Sign-In Button */}
@@ -50,7 +47,7 @@ const RegisterPage = () => {
                     className="w-full flex items-center justify-center gap-3 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-white font-medium text-sm py-3 px-4 transition-colors"
                 >
                     <FaGoogle className="w-4 h-4 text-arenaOrange" />
-                    <span>Sign up with Google</span>
+                    <span>Sign-In with Google</span>
                 </Button>
 
                 {/* Divider */}
@@ -59,7 +56,7 @@ const RegisterPage = () => {
                     <span className="bg-arenaCard px-3 absolute">Or continue with</span>
                 </div>
 
-                <Form onSubmit={handleRegister} className="space-y-4 font-body">
+                <Form onSubmit={handleLogin} className="space-y-4 font-body">
 
                      {/* Email Input */}
                     <div className="space-y-2">
@@ -120,14 +117,14 @@ const RegisterPage = () => {
                     </div>
 
                     <Button type="submit" className="btn bg-arenaOrange hover:bg-opacity-90 border-none text-white w-full font-sports text-xl uppercase tracking-wider mt-4">
-                        Register
+                        Login
                     </Button>
                 </Form>
 
                 <p className="text-center font-body text-sm text-white/60 mt-6">
-                    Already have an account?{' '}
-                    <Link href="/login" className="text-arenaOrange hover:underline font-semibold">
-                        Login here
+                    Don't have an account? {' '}
+                    <Link href="/register" className="text-arenaOrange hover:underline font-semibold">
+                        Register
                     </Link>
                 </p>
             </div>
@@ -135,4 +132,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default LoginPage;
