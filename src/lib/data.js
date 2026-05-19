@@ -12,3 +12,8 @@ export async function getFacilityByEmail(email){
     const res = await fetch (`http://localhost:5000/facilitiesByEmail/${email}`)
     return await res.json();
 }
+
+export async function getBookingData(){
+    const res = await fetch (`http://localhost:5000/facilitiesByEmail/${email}`)
+    return await res.json();
+}

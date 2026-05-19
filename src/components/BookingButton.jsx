@@ -19,14 +19,16 @@ const BookingButton = ({ facility }) => {
         const formData = new FormData(e.currentTarget);
         const rawData = Object.fromEntries(formData.entries());
         const bookedData = {
-            date: new Date(rawData.date),
+            date: new Date(rawData.date).toLocaleDateString("en-GB", {
+            weekday: "long", day: "numeric",month: "short",  year: "numeric" }),
             slot: rawData.slot,
             hours: Number(rawData.hours),
             price: Number(rawData.price),
             image: rawData.image,
             name,
-            user_email,
+            user_email, 
             id,
+            status: 'Pending',
         };
         console.log(bookedData)
         const result = await bookingData(bookedData)
@@ -53,9 +55,10 @@ const BookingButton = ({ facility }) => {
                                 Fill out the form below to complete your booking.
                             </p>
                         </Modal.Header>
-                        <Modal.Body className="p-6">
-                            <Surface variant="default">
-                                <form className="flex flex-col gap-4" onSubmit={handleBook}>
+
+                        <form className="flex flex-col gap-4" onSubmit={handleBook}>
+                            <Modal.Body className="p-6">
+                                <Surface variant="default">
                                     {/* Date */}
                                     <TextField className="w-full" name="date" type="date">
                                         <Label>Date</Label>
@@ -85,15 +88,16 @@ const BookingButton = ({ facility }) => {
                                         <Label>Facility Image</Label>
                                         <Input placeholder="Enter image URL" />
                                     </TextField>
-                                </form>
-                            </Surface>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button slot="close" variant="secondary">
-                                Cancel
-                            </Button>
-                            <Button slot="close" type="submit">Confirm Booking</Button>
-                        </Modal.Footer>
+                                </Surface>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button slot="close" variant="secondary">
+                                    Cancel
+                                </Button>
+                                <Button slot="close" type="submit">Confirm Booking</Button>
+                            </Modal.Footer>
+                        </form>
+
                     </Modal.Dialog>
                 </Modal.Container>
             </Modal.Backdrop>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getFacilityById } from "@/lib/data";
 import { Button } from '@heroui/react';
+import BookingButton from '@/components/BookingButton'
 import { IoLocationOutline, IoPricetagOutline, IoPeopleOutline, IoConstructOutline,IoMailOutline,IoCalendarOutline } from "react-icons/io5";
 
 const FacilityDetailsPage = async ({ params }) => {
@@ -145,7 +146,7 @@ const FacilityDetailsPage = async ({ params }) => {
             </div>
           </div>
         </div>
-
+        <BookingButton facility={facility} />
       </div>
     </main>
   );

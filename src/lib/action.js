@@ -67,8 +67,8 @@ export async function facilityUpdate({ id, modifiedData }) {
 }
 
 //insert data
-export async function bookingData(bookingData) {
-    const data = bookingData;
+export async function bookingData(bookedData) {
+    const data = bookedData;
     const res = await fetch('http://localhost:5000/myBookings', {
         method: "POST",
         headers: {
