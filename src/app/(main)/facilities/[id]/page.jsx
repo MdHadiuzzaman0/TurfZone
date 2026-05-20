@@ -26,12 +26,13 @@ const FacilityDetailsPage = async ({ params }) => {
           
           
             <div className="flex items-center gap-3">
-              <Button
+              {/* <Button
                 type="button"
                 className="flex items-center gap-1.5 bg-red-950/30 hover:bg-red-900 text-red-500 border border-red-900/30 px-4 py-2 rounded-md text-sm font-sports uppercase tracking-wider transition-all"
               >
                 Book now
-              </Button>
+              </Button> */}
+              <BookingButton facility={facility} />
             </div>
           
         </div>
@@ -146,7 +147,7 @@ const FacilityDetailsPage = async ({ params }) => {
             </div>
           </div>
         </div>
-        <BookingButton facility={facility} />
+        
       </div>
     </main>
   );

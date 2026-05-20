@@ -14,6 +14,7 @@ const ManageFacilities = async () => {
     })
     // console.log(session)
     const facilities = await getFacilityByEmail(session?.user.email)
+    console.log(facilities)
 
     return (
         <div className="min-h-screen bg-black p-6 md:p-12">

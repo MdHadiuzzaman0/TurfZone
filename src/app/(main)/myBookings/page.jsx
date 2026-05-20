@@ -50,7 +50,7 @@ const MyBookingCard = async () => {
                                             className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                                         />
                                         {item.status && (
-                                            <span className="absolute top-3 left-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full font-bold tracking-wider backdrop-blur-md">
+                                            <span className="absolute top-3 left-3 bg-arenaOrange text-white border border-emerald-500/20 text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full font-bold tracking-wider backdrop-blur-md">
                                                 {item.status}
                                             </span>
                                         )}

@@ -40,11 +40,22 @@ const BookingButton = ({ facility }) => {
     }
 
     const LoggedIn = session?.user
+    if (!LoggedIn) {
+  return (
+    <Button 
+      variant="solid" 
+      disabled
+      className="bg-arenaOrange/70 text-white border border-zinc-700 cursor-not-allowed opacity-50 font-sports font-black uppercase tracking-wider px-6 py-3 rounded-md"
+    >
+      Login to Book
+    </Button>
+  );
+}
 
     return (
         <Modal>
       <Button 
-        variant="solid" disabled={!LoggedIn}
+        variant="solid"
         className="bg-arenaOrange hover:bg-orange-600 text-white font-sports font-black uppercase tracking-wider px-6 py-3 rounded-md transition-all duration-300 transform hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-orange-600/10 cursor-pointer"
       >
         Book Now
@@ -57,9 +68,9 @@ const BookingButton = ({ facility }) => {
             
             <Modal.Header className="space-y-3">
               <div className="flex items-center gap-3">
-                <Modal.Icon className="bg-orange-600/10 border border-orange-600/20 text-arenaOrange p-2 rounded-md">
+                {/* <Modal.Icon className="bg-orange-600/10 border border-orange-600/20 text-arenaOrange p-2 rounded-md">
                   <CalendarDays className="size-5" />
-                </Modal.Icon>
+                </Modal.Icon> */}
                 <Modal.Heading className="text-xl font-sports font-black uppercase tracking-wide text-zinc-100">
                   Book Facility
                 </Modal.Heading>

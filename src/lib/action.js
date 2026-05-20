@@ -16,8 +16,9 @@ export async function facilityCreate(formData) {
         image: rawData.image,
         available_slots,
         description: rawData.description,
-        booking_count: 0
+        booking_count: Number(rawData.booking_count),
     };
+    console.log(newFacility)
 
     const res = await fetch('http://localhost:5000/facilities', {
         method: "POST",

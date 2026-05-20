@@ -49,13 +49,13 @@ export default function AddFacilityPage() {
               <Select name="facility_type" isRequired className="w-full" placeholder="Select category">
                 <Label className="text-zinc-400">Facility Type</Label>
                 <Select.Trigger>
-                  <Select.Value className="uppercase text-balck" />
+                  <Select.Value className="uppercase text-black" />
                 </Select.Trigger>
-                <Select.Popover className="bg-zinc-900 border border-zinc-800 text-black">
+                <Select.Popover className="bg-zinc-900 border border-zinc-800 text-white">
                   <ListBox>
                     <ListBox.Item id="Futsal" textValue="Futsal">Futsal</ListBox.Item>
-                    <ListBox.Item id="Mini Football" textValue="Mini Football">Mini Football (3v3 / 5v5)</ListBox.Item>
-                    <ListBox.Item id="Short Pitch Cricket" textValue="Short Pitch Cricket">Short Pitch Cricket</ListBox.Item>
+                    <ListBox.Item id="Football" textValue="Football">Football</ListBox.Item>
+                    <ListBox.Item id="Cricket" textValue="Cricket">Cricket</ListBox.Item>
                     <ListBox.Item id="Badminton" textValue="Badminton">Badminton</ListBox.Item>
                     <ListBox.Item id="Table Tennis" textValue="Table Tennis">Table Tennis (Ping Pong)</ListBox.Item>
                     <ListBox.Item id="Basketball" textValue="Basketball">Basketball (3x3 Half Court)</ListBox.Item>
@@ -96,11 +96,11 @@ export default function AddFacilityPage() {
             </TextField>
 
             <div className="md:col-span-2">
-              <TextField isDisabled className="w-full" name="owner_email" value={session?.user?.email}>
+              <TextField isReadOnly className="w-full" name="owner_email" value={session?.user?.email}>
                 <Label className="text-zinc-400 font-sports uppercase text-sm tracking-wider">Owner Email</Label>
                 <Input
                   placeholder="Auto-generated"
-                  className="rounded-2xl border border-white/10 bg-arenaCard/50 text-zinc-500 font-body pl-4 mt-1.5 cursor-not-allowed opacity-80"
+                  className="rounded-2xl border border-white/10 text-zinc-500 font-body pl-4 mt-1.5 cursor-not-allowed opacity-80"
                 />
                 <Description className="text-zinc-500 text-xs mt-1 block italic font-body">This field is auto-filled by system</Description>
               </TextField>
@@ -114,13 +114,14 @@ export default function AddFacilityPage() {
               </TextField>
             </div>
 
-            <div>
-              <TextField name="booking_count">
-                <Label className="text-zinc-500">Initial Booking Count</Label>
+            <div className="md:col-span-2">
+              <TextField name="booking_count" type="number" isRequired>
+                <Label className="text-zinc-500">Booking Count</Label>
                 <Input
                   type="number" placeholder='0'
-                  className="rounded-2xl opacity-50 bg-zinc-900"
+                  className="rounded-2xl"
                 />
+                 <FieldError className="text-red-500 text-xs mt-1" />
               </TextField>
             </div>
 

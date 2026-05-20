@@ -42,7 +42,7 @@ const HeroSection = () => {
 
           <div className="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
             <Link 
-              href="/allFacilities" 
+              href="/facilities" 
               className="bg-arenaOrange hover:bg-orange-600 text-white font-sports text-lg uppercase px-10 py-4 rounded-md font-bold tracking-wide transition-all shadow-xl shadow-black/50 hover:scale-[1.02] text-center"
             >
               Explore Facilities

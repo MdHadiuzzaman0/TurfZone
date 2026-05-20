@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const SPORTS_DATA = [
   { id: "Futsal", label: "Futsal" },
-  { id: "Football", label: "Mini Football (3v3 / 5v5)" },
-  { id: "Cricket", label: "Short Pitch Cricket" },
+  { id: "Football", label: "Football" },
+  { id: "Cricket", label: "Cricket" },
   { id: "Badminton", label: "Badminton" },
   { id: "Table Tennis", label: "Table Tennis (Ping Pong)" },
   { id: "Basketball", label: "Basketball (3x3 Half Court)" },
