@@ -85,7 +85,7 @@ export async function bookingData(bookedData) {
     }
 }
 
-//delete
+//booking data delete
 export async function bookingDelete({ id, name }) {
     const res = await fetch(`http://localhost:5000/myBookings/${id}`, {
         method: "DELETE",
@@ -98,4 +98,20 @@ export async function bookingDelete({ id, name }) {
     }
      return { success: false }
 }
+
+//filter
+export async function fetchFilteredFacilities(sportsArray) {
+    const res = await fetch(`http://localhost:5000/facilities/filter`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sportsArray), 
+    });
+    const result = await res.json()
+    // console.log(data)
+    return result;
+}
+
+
 

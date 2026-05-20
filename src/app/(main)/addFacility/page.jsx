@@ -53,10 +53,25 @@ export default function AddFacilityPage() {
                 </Select.Trigger>
                 <Select.Popover className="bg-zinc-900 border border-zinc-800 text-black">
                   <ListBox>
-                    <ListBox.Item id="Football" textValue="Football">Football</ListBox.Item>
+                    <ListBox.Item id="Futsal" textValue="Futsal">Futsal</ListBox.Item>
+                    <ListBox.Item id="Mini Football" textValue="Mini Football">Mini Football (3v3 / 5v5)</ListBox.Item>
+                    <ListBox.Item id="Short Pitch Cricket" textValue="Short Pitch Cricket">Short Pitch Cricket</ListBox.Item>
                     <ListBox.Item id="Badminton" textValue="Badminton">Badminton</ListBox.Item>
-                    <ListBox.Item id="Tennis" textValue="Tennis">Tennis</ListBox.Item>
-                    <ListBox.Item id="Cricket" textValue="Cricket">Cricket</ListBox.Item>
+                    <ListBox.Item id="Table Tennis" textValue="Table Tennis">Table Tennis (Ping Pong)</ListBox.Item>
+                    <ListBox.Item id="Basketball" textValue="Basketball">Basketball (3x3 Half Court)</ListBox.Item>
+                    <ListBox.Item id="Volleyball" textValue="Volleyball">Volleyball</ListBox.Item>
+                    <ListBox.Item id="Handball" textValue="Handball">Handball</ListBox.Item>
+                    <ListBox.Item id="Dodgeball" textValue="Dodgeball">Dodgeball</ListBox.Item>
+                    <ListBox.Item id="Carrom" textValue="Carrom">Carrom</ListBox.Item>
+                    <ListBox.Item id="Chess" textValue="Chess">Chess</ListBox.Item>
+                    <ListBox.Item id="Billiards" textValue="Billiards">Billiards / Pool</ListBox.Item>
+                    <ListBox.Item id="Foosball" textValue="Foosball">Foosball (Table Football)</ListBox.Item>
+                    <ListBox.Item id="Darts" textValue="Darts">Darts</ListBox.Item>
+                    <ListBox.Item id="Kabaddi" textValue="Kabaddi">Kabaddi (Ha-Du-Du)</ListBox.Item>
+                    <ListBox.Item id="Karate" textValue="Karate">Karate / Martial Arts</ListBox.Item>
+                    <ListBox.Item id="Yoga" textValue="Yoga">Yoga / Freehand Exercise</ListBox.Item>
+                    <ListBox.Item id="Gymnastics" textValue="Gymnastics">Gymnastics</ListBox.Item>
+                    <ListBox.Item id="Archery" textValue="Archery">Indoor Archery</ListBox.Item>
                   </ListBox>
                 </Select.Popover>
               </Select>
