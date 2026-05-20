@@ -1,17 +1,19 @@
 "use client";
-
 import { getAllFacilities } from "@/lib/data";
 import FacilityCard from "@/components/FacilityCard";
 import Filter from "@/components/Filter";
+import Search from "@/components/Search";
 import { useState, useEffect } from "react";
+import {Input} from "@heroui/react";
 
 const AllFacilitiesPage = () => {
   const [displayedFacilities, setDisplayedFacilities] = useState([]);
 
   useEffect(() => {
-    getAllFacilities().then(setDisplayedFacilities);
+    getAllFacilities().then(data => setDisplayedFacilities(data));
   }, []);
   
+
   return (
     <main className="min-h-screen bg-zinc-950 text-white py-12 px-6 lg:px-16">
       <div className="max-w-7xl mx-auto space-y-10">
@@ -29,11 +31,7 @@ const AllFacilitiesPage = () => {
             <Filter setFilteredFacilities={setDisplayedFacilities} />
 
           {/* Search Input Box */}
-          <input
-            type="text"
-            placeholder="Search by facility name..."
-            className="w-full sm:max-w-md bg-zinc-950 border border-zinc-800 focus:border-arenaOrange outline-none px-4 py-2.5 rounded-md text-sm text-white placeholder-zinc-600 transition-colors"
-          />
+          <Search setSearchFacilities={setDisplayedFacilities}/>
 
         </div>
 

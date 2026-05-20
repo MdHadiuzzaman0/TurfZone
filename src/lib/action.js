@@ -113,5 +113,13 @@ export async function fetchFilteredFacilities(sportsArray) {
     return result;
 }
 
+//serach
+export async function searchFacilities(text){
+    const res = await fetch(`http://localhost:5000/facilities/search?searchedValue=${text}`)
+    const result = await res.json()
+    // console.log(data)
+    return result;
+}
+
 
 
