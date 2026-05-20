@@ -32,9 +32,10 @@ const Navbar = async () => {
                         <NavLink href="/manageFacilities">Manage Facilities</NavLink>
                     </div>
                     }
-           
 
+            <div className="navbar-end">
             <NavbarRight/>
+            </div>
           
         </div>
     )

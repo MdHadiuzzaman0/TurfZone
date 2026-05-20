@@ -4,10 +4,13 @@ import { IoMenu } from "react-icons/io5";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
+import { useState } from "react";
 
 const NavbarRight = () => {
     const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
+
     const { data: session, isPending} = authClient.useSession();
     const user = session?.user;
 
@@ -31,7 +34,9 @@ const NavbarRight = () => {
             )}
 
             <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="border border-green-600 px-3 py-2 text-2xl">
+                <div tabIndex={0} role="button" 
+                onClick={() => setIsOpen(!isOpen)}
+                className="border border-green-400 rounded-full shadow-lg shadow-gray-800 px-3 py-2 text-2xl">
                     {session ? (
 
                         <div className="flex items-center gap-2 ">
@@ -39,8 +44,12 @@ const NavbarRight = () => {
                                 <Avatar.Image alt="John Doe" src={user?.image} />
                                 <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
                             </Avatar>
-                            <span className="text-sm font-body text-white font-medium hover:text-black">{session.user.name}</span>
-                            <RiArrowDropDownLine />
+                            <span className="text-sm font-body text-white font-medium ">{session.user.name}</span>
+                            {isOpen ? (
+              <RiArrowDropUpLine className="text-3xl text-arenaOrange" />
+            ) : (
+              <RiArrowDropDownLine className="text-3xl text-zinc-400" />
+            )}
                         </div>
                     ) : (
                         <IoMenu />
