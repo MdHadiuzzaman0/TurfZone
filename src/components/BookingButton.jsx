@@ -21,7 +21,7 @@ const BookingButton = ({ facility }) => {
         const rawData = Object.fromEntries(formData.entries());
         const bookedData = {
             date: new Date(rawData.date).toLocaleDateString("en-GB", {
-                weekday: "long", day: "numeric",month: "short",  year: "numeric" }),
+                weekday: "long", day: "numeric",month: "short"}),
             slot: rawData.slot,
             hours: Number(rawData.hours),
             price: Number(rawData.price),

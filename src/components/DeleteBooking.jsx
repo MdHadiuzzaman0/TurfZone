@@ -25,7 +25,7 @@ const DeleteFacility = ({ id, name }) => {
   return (
     <div>
       <AlertDialog>
-        <Button variant="danger"><FaRegTrashAlt /> Delete Booking Item</Button>
+        <Button variant="danger"><FaRegTrashAlt /> Delete</Button>
         <AlertDialog.Backdrop>
           <AlertDialog.Container>
             <AlertDialog.Dialog className="sm:max-w-100">

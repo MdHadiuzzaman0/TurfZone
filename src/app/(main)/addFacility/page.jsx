@@ -31,7 +31,7 @@ export default function AddFacilityPage() {
       <Card className="w-full max-w-4xl p-8 shadow-2xl bg-arenaCard border border-zinc-900 rounded-none text-white">
 
         <div className="mb-8 border-b border-zinc-900 pb-4">
-          <h1 className="text-3xl font-black uppercase tracking-tighter text-white">
+          <h1 className="text-3xl font-black uppercase text-white">
             Post a New <span className="text-arenaOrange">Facility</span>
           </h1>
           <p className="text-zinc-400 text-sm">Fill in the details to launch your next big sports arena arena.</p>
@@ -54,7 +54,7 @@ export default function AddFacilityPage() {
                 <Select.Trigger>
                   <Select.Value className="uppercase text-black" />
                 </Select.Trigger>
-                <Select.Popover className="bg-zinc-900 border border-zinc-800 text-white">
+                <Select.Popover className="bg-zinc-900 border border-zinc-800 text-arenaOrange">
                   <ListBox>
                     <ListBox.Item id="Futsal" textValue="Futsal">Futsal</ListBox.Item>
                     <ListBox.Item id="Football" textValue="Football">Football</ListBox.Item>
