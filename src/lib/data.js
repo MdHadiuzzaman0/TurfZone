@@ -14,7 +14,7 @@ export async function getFacilityById(id, token) {
     return await res.json();
 }
 
-export async function getFacilityByEmail(email) {
+export async function getFacilityByEmail(email, token) {
     const res = await fetch(`http://localhost:5000/facilitiesByEmail/${email}`, {
         headers: {
             authorization: `Bearer ${token}`

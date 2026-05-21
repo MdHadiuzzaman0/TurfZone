@@ -3,13 +3,14 @@ import { authClient } from "@/lib/auth-client"
 import { Envelope } from "@gravity-ui/icons";
 import { bookingData } from "@/lib/action";
 import { toast } from "react-hot-toast";
-import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { Button, Input, Label, Modal, TextField, Dropdown } from "@heroui/react"; 
 import { useRouter } from "next/navigation";
 
 const BookingButton = ({ facility }) => {
     const router = useRouter();
 
-    const { _id, name, price_per_hour, image } = facility;
+    const { _id, name, price_per_hour, image, available_slots } = facility;
+
     const { data: session, isPending } = authClient.useSession()
     const user_email = session?.user.email
     const id = session?.user.id
@@ -20,7 +21,7 @@ const BookingButton = ({ facility }) => {
         const rawData = Object.fromEntries(formData.entries());
         const bookedData = {
             date: new Date(rawData.date).toLocaleDateString("en-GB", {
-            weekday: "long", day: "numeric",month: "short",  year: "numeric" }),
+                weekday: "long", day: "numeric",month: "short",  year: "numeric" }),
             slot: rawData.slot,
             hours: Number(rawData.hours),
             price: Number(rawData.price),
@@ -81,7 +82,7 @@ const BookingButton = ({ facility }) => {
 
               <div className="bg-orange-950/20 border border-arenaOrange/30 rounded-lg p-3 mt-2">
                 <p className="text-xs font-body text-arenaOrange font-medium leading-relaxed">
-                  ⚠️ **Notice:** Without login, Bookings will not be processed.
+                  ⚠️ Without login, Bookings will not be processed.
                 </p>
               </div>
             </Modal.Header>
@@ -100,14 +101,23 @@ const BookingButton = ({ facility }) => {
                 </TextField>
 
                 {/* Slot */}
-                <TextField className="w-full flex flex-col gap-1.5" name="slot" type="text">
-                  <Label className="text-xs uppercase tracking-wider text-zinc-400 font-sports font-bold">Available Slot</Label>
-                  <Input 
-                    required 
-                    className="w-full bg-arenaCard border border-zinc-800 text-white rounded-md p-2.5 text-sm focus:border-arenaOrange outline-none font-body transition-colors" 
-                    placeholder="e.g., 08:00 AM - 10:00 AM" 
-                  />
-                </TextField>
+                <div className="w-full flex flex-col gap-1.5">
+  <label className="text-xs uppercase tracking-wider text-zinc-400 font-sports font-bold">
+    Available Slot
+  </label>
+  <select
+    name="slot"
+    required
+    className="w-full bg-arenaCard border border-zinc-800 text-white rounded-md p-2.5 text-sm focus:border-arenaOrange outline-none font-body transition-colors cursor-pointer"
+  >
+    <option value="">Select a slot</option>
+    {available_slots?.map((slot) => (
+      <option key={slot} value={slot}>
+        {slot}
+      </option>
+    ))}
+  </select>
+</div>
 
                 {/* Hours */}
                 <TextField className="w-full flex flex-col gap-1.5" name="hours" type="number">
@@ -121,7 +131,7 @@ const BookingButton = ({ facility }) => {
                 </TextField>
 
                 {/* Price */}
-                <TextField className="w-full flex flex-col gap-1.5" name="price" type="number" defaultValue={price_per_hour} disabled>
+                <TextField isReadOnly className="w-full flex flex-col gap-1.5" name="price" type="number" defaultValue={price_per_hour} disabled>
                   <Label className="text-xs uppercase tracking-wider text-zinc-400 font-sports font-bold">Price Per Hour ($)</Label>
                   <Input 
                     className="w-full bg-zinc-900 border border-zinc-800 text-zinc-500 rounded-md p-2.5 text-sm font-body cursor-not-allowed" 
@@ -129,7 +139,7 @@ const BookingButton = ({ facility }) => {
                 </TextField>
 
                 {/* Image */}
-                <TextField className="w-full flex flex-col gap-1.5" name="image" type="url" defaultValue={image} disabled>
+                <TextField isReadOnly className="w-full flex flex-col gap-1.5" name="image" type="url" defaultValue={image} disabled>
                   <Label className="text-xs uppercase tracking-wider text-zinc-400 font-sports font-bold">Facility Image URL</Label>
                   <Input 
                     className="w-full bg-zinc-900 border border-zinc-800 text-zinc-500 rounded-md p-2.5 text-sm font-body truncate cursor-not-allowed" 
@@ -148,7 +158,6 @@ const BookingButton = ({ facility }) => {
                 </Button>
                 
                 <Button 
-                  
                   type="submit"
                   className="bg-arenaOrange hover:bg-orange-600 text-white font-body text-sm font-bold px-5 py-2.5 rounded-md transition-all shadow-lg shadow-orange-600/10 cursor-pointer"
                 >
@@ -164,4 +173,4 @@ const BookingButton = ({ facility }) => {
     );
 };
 
-export default BookingButton; 
+export default BookingButton;
