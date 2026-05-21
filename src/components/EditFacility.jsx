@@ -39,7 +39,7 @@ const EditFacility = ({ facility }) => {
 
   return (
     <Modal>
-      <Button className="bg-arenaOrange text-white font-sports uppercase tracking-wider">Open Edit Form</Button>
+      <Button className="bg-arenaOrange text-white font-sports uppercase tracking-wider">Edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
           <Modal.Dialog className="sm:max-w-md bg-black border border-white/10 rounded-2xl overflow-hidden">
