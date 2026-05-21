@@ -75,8 +75,6 @@ export async function facilityUpdate({ id, modifiedData, token }) {
 
 //insert booking data
 export async function bookingData(bookedData, token) {
-    console.log("token:", token)  // যোগ করো
-    console.log("bookedData:", bookedData)  // যোগ করো
     const data = bookedData;
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/myBookings`, {
         method: "POST",
@@ -87,9 +85,7 @@ export async function bookingData(bookedData, token) {
         body: JSON.stringify(data)
     })
 
-    console.log("res status:", res.status)  
     const result = await res.json()
-    console.log("result:", result)  // যোগ করো
     if (result.insertedId) {
         revalidatePath('/myBookings');
         return { success: true };

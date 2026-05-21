@@ -1,9 +1,10 @@
 import Link from "next/link";
-import NavLink from '@/components/NavLink';
-import NavbarRight from '@/components/NavbarRight';
+
 import { IoMenu } from "react-icons/io5";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import NavLink from "./NavLink";
+import NavbarRight from "./NavbarRight";
 
 const Navbar = async () => {
     const session = await auth.api.getSession({
