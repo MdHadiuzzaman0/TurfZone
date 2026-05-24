@@ -32,18 +32,10 @@ const MyBookingCard = async () => {
                 {bookingData.length > 0 ? (
                     <div className="flex flex-col gap-4">
                         {bookingData.map((item) => {
-                            {/* const formattedDate = item.date 
-                                ? new Date(item.date).toLocaleDateString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric"
-                                  })
-                                : "N/A"; */}
-                                // console.log(item._id)
                             return (
                                 <div
                                     className="bg-arenaCard border border-zinc-900 rounded-2xl overflow-hidden hover:border-arenaOrange/40 transition-all duration-300 group flex flex-col sm:flex-row items-center gap-6 p-5 shadow-xl relative"
-                                    key={item._id || item.id}
+                                    key={item._id}
                                 >
                                     {/* Image Section */}
                                     <div className="relative w-full sm:w-48 h-36 rounded-xl overflow-hidden bg-zinc-900 shrink-0">

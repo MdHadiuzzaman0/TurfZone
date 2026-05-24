@@ -5,11 +5,9 @@ import { Description, Button, Input, Select, Label, ListBox, Card, TextField, Fi
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast';
 
-
 export default function AddFacilityPage() {
   const { data: session, isPending } = authClient.useSession();
   const router = useRouter()
-
 
   async function handleAdd(e) {
     e.preventDefault();

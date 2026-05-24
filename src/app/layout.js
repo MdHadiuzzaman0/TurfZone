@@ -1,9 +1,9 @@
 import { Barlow_Condensed, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/components/Navbar'
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import ConditionalPageShow from "@/components/ConditionalPageShow";
-import FacilityCardOfHomePage from "@/components/FacilityCardOfHomePage";
+import Footer from "@/components/Footer";
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
@@ -18,7 +18,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Arena Pulse | Premium Sports Facility Booking",
+  title: "TurfZone | Premium Sports Facility Booking",
   description: "Book your favorite football turfs, badminton courts, and sports slots instantly.",
 };
 
@@ -29,11 +29,10 @@ export default function RootLayout({ children }) {
       className={`${barlowCondensed.variable} ${plusJakartaSans.variable}`}
     >
       <body className="font-body bg-[#122926] text-white antialiased">
-        <Navbar/>
+        <Navbar />
         <main>{children}</main>
-        <ConditionalPageShow>
-          <FacilityCardOfHomePage />
-        </ConditionalPageShow>
+        <ConditionalPageShow />
+        <Footer />
         <Toaster position="top-right" reverseOrder={true}/>
       </body>
     </html>

@@ -16,10 +16,8 @@ const ManageFacilities = async () => {
     headers: await headers(),
   });
 
-  // console.log(session)
   const facilities = await getFacilityByEmail(session?.user.email, token);
-  console.log(facilities);
-
+  console.log(facilities, session);
   return (
     <div className="min-h-screen bg-black p-6 md:p-12">
       <div className="max-w-6xl mx-auto">
@@ -101,7 +99,7 @@ const ManageFacilities = async () => {
 
                 <div className="flex flex-row md:flex-col gap-3 w-full md:w-auto justify-end flex-shrink-0">
                   <EditFacility facility={item} />
-                  <DeleteFacility id={item._id} name={item.name} />
+                  <DeleteFacility _id={item._id} name={item.name} />
                 </div>
               </div>
             ))}

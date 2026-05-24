@@ -27,17 +27,17 @@ const HeroSection = () => {
 
           <div className="inline-block">
             <span className="text-arenaOrange font-mono browser-default uppercase tracking-widest text-xs sm:text-sm bg-zinc-950/80 px-4 py-2 rounded-full border border-arenaOrange/30 backdrop-blur-md shadow-lg">
-              Welcome to ArenaPulse Portal
+              Welcome to TurfZone Portal
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-sports font-black uppercase text-white leading-none tracking-wide drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-sports font-black uppercase text-white leading-none tracking-wide drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
             Your Ultimate Arena <br />
-            Book with <span className="text-arenaOrange italic relative">ArenaPulse</span>
+            Unleash Your Inner <span className="text-arenaOrange italic relative">Athlete</span>
           </h1>
 
           <p className="text-zinc-200 font-body text-base sm:text-md lg:text-lg max-w-3xl mx-auto lg:mx-0 leading-relaxed drop-shadow-[0_3px_3px_rgba(0,0,0,0.8)] font-medium">
-            Discover and reserve premium football turfs, professional badminton courts, and high-performance sports facilities near you. 
+            Discover top-rated venues, track real-time pitch availability, lock your match timings and get instant court access without the hassle.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">

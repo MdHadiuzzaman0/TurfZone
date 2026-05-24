@@ -2,8 +2,9 @@
 import { usePathname } from 'next/navigation';
 import ProjectFlow from './ProjectFlow';
 import WhyChooseUs from './WhyChooseUs';
-import Footer from './Footer';
-// import FacilityCardOfHomePage from './FacilityCardOfHomePage';
+import FacilityCardOfHomePage from './FacilityCardOfHomePage';
+import Ratings from './Ratings';
+import Review from './Review';
 
 export default function ConditionalSections({children}) {
   const pathname = usePathname();
@@ -12,10 +13,12 @@ export default function ConditionalSections({children}) {
   
   return (
     <>
-      {children}
+      <Ratings />
       <ProjectFlow/>
+      <FacilityCardOfHomePage />
+      {children}
       <WhyChooseUs />
-      <Footer/>
+      <Review/>
     </>
   );
 }

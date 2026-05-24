@@ -22,24 +22,11 @@ const FacilityDetailsPage = async ({ params }) => {
       <div className="max-w-6xl mx-auto space-y-6">
         
         <div className="flex justify-between items-center border-b border-zinc-900 pb-4">
-          <Link 
-            href="/facilities" 
-            className="text-zinc-400 hover:text-white transition-colors text-sm font-mono"
-          >
+          <Link href="/facilities" className="text-zinc-400 hover:text-white transition-colors text-sm font-mono">
             ← Back to All Facilities
           </Link>
           
-          
-            <div className="flex items-center gap-3">
-              {/* <Button
-                type="button"
-                className="flex items-center gap-1.5 bg-red-950/30 hover:bg-red-900 text-red-500 border border-red-900/30 px-4 py-2 rounded-md text-sm font-sports uppercase tracking-wider transition-all"
-              >
-                Book now
-              </Button> */}
-              <BookingButton facility={facility} />
-            </div>
-          
+          <BookingButton facility={facility} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-4">
@@ -81,7 +68,7 @@ const FacilityDetailsPage = async ({ params }) => {
                 <IoPricetagOutline className="text-2xl text-emerald-400 shrink-0" />
                 <div>
                   <p className="text-xs font-mono text-zinc-500 uppercase">Hourly Price</p>
-                  <p className="text-sm text-zinc-200 font-medium">${price_per_hour} / Hour</p>
+                  <p className="text-sm text-zinc-200 font-medium">৳ {price_per_hour} / Hour</p>
                 </div>
               </div>
 

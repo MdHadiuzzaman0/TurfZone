@@ -37,8 +37,8 @@ export async function facilityCreate(formData, token) {
 }
 
 //delete
-export async function facilityDelete({ id, name, token }) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${id}`, {
+export async function facilityDelete({ _id, name, token }) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${_id}`, {
         method: "DELETE",
         headers: {
             authorization: `Bearer ${token}`
@@ -53,9 +53,9 @@ export async function facilityDelete({ id, name, token }) {
 }
 
 //update
-export async function facilityUpdate({ id, modifiedData, token }) {
+export async function facilityUpdate({ _id, modifiedData, token }) {
     const data = modifiedData;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${_id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

@@ -8,7 +8,7 @@ export default function Footer() {
         
                 <div className="space-y-4">
           <h3 className="text-2xl font-sports font-black uppercase tracking-wide text-white">
-            Arena<span className="text-arenaOrange">Pulse</span>
+            Turf<span className="text-arenaOrange">Zone</span>
           </h3>
           <p className="text-sm text-zinc-500 leading-relaxed">
             Book top-tier sports facilities, turfs, and courts in seconds. Your ultimate arena, just a click away.

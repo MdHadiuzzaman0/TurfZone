@@ -2,7 +2,7 @@ import { IoShieldCheckmarkOutline, IoFlashOutline, IoTimeOutline } from "react-i
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 bg-zinc-950 px-6 border-t border-zinc-900">
+    <section className="py-20 bg-zinc-900 px-6 border-t border-zinc-900">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         <div className="space-y-6">

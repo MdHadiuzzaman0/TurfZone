@@ -8,14 +8,14 @@ import { authClient } from "@/lib/auth-client";
 
 const EditFacility = ({ facility }) => {
   const router = useRouter();
-  const id = facility?._id;
+  const _id = facility?._id;
   const owner_email = facility?.owner_email;
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const updatedData = Object.fromEntries(formData);
-    const { name, facility_type, location, price_per_hour, image, capacity, available_slots, description } = updatedData;
+    const rawData = Object.fromEntries(formData);
+    const { name, facility_type, location, price_per_hour, image, capacity, available_slots, description, booking_count } = rawData;
     const modifiedData = {
       name,
       facility_type,
@@ -25,11 +25,12 @@ const EditFacility = ({ facility }) => {
       capacity: Number(capacity),
       available_slots: available_slots ? available_slots.split(",").map(slot => slot.trim()) : [],
       description,
-      owner_email
+      owner_email, 
+      booking_count
     };
     const { data: tokenData} = await authClient.token()
     const token = tokenData?.token; 
-    const result = await facilityUpdate({ id, modifiedData, token })
+    const result = await facilityUpdate({ _id, modifiedData, token })
     if (result.success) {
       toast.success(`${name} is updated`)
       router.push('/manageFacilities')
@@ -60,7 +61,7 @@ const EditFacility = ({ facility }) => {
                 <form id="edit-facility-form" onSubmit={handleUpdate} className="flex flex-col gap-5">
                   {/* Facility Name */}
                   <TextField className="w-full" name="name" type="text" defaultValue={facility?.name || ""}>
-                    <Label className="text-zinc-400 font-sports uppercase text-xs tracking-wider">Facility Name</Label>https://www.facebook.com/share/r/1DmrzgLyna/
+                    <Label className="text-zinc-400 font-sports uppercase text-xs tracking-wider">Facility Name</Label>
                     <Input placeholder="Enter facility name" className="rounded-xl border border-white/10 bg-arenaCard/50 text-white mt-1.5" />
                   </TextField>
 
@@ -91,6 +92,12 @@ const EditFacility = ({ facility }) => {
                   {/* Capacity */}
                   <TextField className="w-full" name="capacity" type="number" defaultValue={facility?.capacity || ""}>
                     <Label className="text-zinc-400 font-sports uppercase text-xs tracking-wider">Capacity (Players)</Label>
+                    <Input placeholder="Max players allowed" className="rounded-xl border border-white/10 bg-arenaCard/50 text-white mt-1.5" />
+                  </TextField>
+
+                  {/* Booking Count */}
+                  <TextField className="w-full" name="booking_count" type="number" defaultValue={facility?.booking_count || ""}>
+                    <Label className="text-zinc-400 font-sports uppercase text-xs tracking-wider">Booking Count</Label>
                     <Input placeholder="Max players allowed" className="rounded-xl border border-white/10 bg-arenaCard/50 text-white mt-1.5" />
                   </TextField>
 

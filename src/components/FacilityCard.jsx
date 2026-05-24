@@ -5,7 +5,6 @@ import { IoLocationOutline, IoPricetagOutline } from "react-icons/io5";
 import BookingButton from "./BookingButton";
 
 const FacilityCard = ({ facility }) => {
-  // Destructuring database data (with fallback handling)
   const { _id, name, facility_type, location, price_per_hour, image } = facility;
   // console.log(_id)
 
@@ -38,7 +37,7 @@ const FacilityCard = ({ facility }) => {
 
           <div className="flex items-center gap-2 text-zinc-300 font-medium">
             <IoPricetagOutline className="text-emerald-400 shrink-0 text-base" />
-            <span className="text-sm">Price: <span className="text-white font-bold text-base">${price_per_hour}</span> / Hour</span>
+            <span className="text-sm">Price: <span className="text-white font-bold text-base">৳ {price_per_hour}</span> / Hour</span>
           </div>
         </div>
       </div>

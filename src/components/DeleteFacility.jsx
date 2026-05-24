@@ -6,13 +6,13 @@ import { toast } from "react-hot-toast";
 import { useRouter } from 'next/navigation'
 import { authClient } from "@/lib/auth-client";
 
-const DeleteFacility = ({ id, name}) => {
+const DeleteFacility = ({ _id, name}) => {
 
   const router = useRouter()
   async function handleDlt() {
     const { data: tokenData} = await authClient.token()
     const token = tokenData?.token; 
-    const result = await facilityDelete({ id, name, token })
+    const result = await facilityDelete({ _id, name, token })
     if (result.success) {
       toast.error(`${name} is removed`)
       router.push('/manageFacilities')

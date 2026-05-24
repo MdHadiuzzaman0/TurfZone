@@ -1,5 +1,3 @@
-
-
 export async function getAllFacilities() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities`)
     return await res.json();

@@ -27,8 +27,8 @@ const AllFacilitiesPage = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-arenaCard p-4 rounded-xl border border-zinc-900 shadow-md">
-            {/* Filter Dropdown Box */}
-            <Filter setFilteredFacilities={setDisplayedFacilities} />
+          {/* Filter Dropdown Box */}
+          <Filter setFilteredFacilities={setDisplayedFacilities} />
 
           {/* Search Input Box */}
           <Search setSearchFacilities={setDisplayedFacilities}/>
