@@ -6,7 +6,7 @@
 
 ## 🔗 Live URL
 
-**Link:** https://arena-pulse-kappa.vercel.app/
+**Link:** https://turf-zone-ruby.vercel.app/
 
 ---
 
