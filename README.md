@@ -1,7 +1,19 @@
-<img width="1400" height="500" alt="TurfzoneBanner" src="https://github.com/user-attachments/assets/16e48401-83bb-46b4-a40d-b850d13b0464" />
+<img width="1400" height="500" alt="TurfZone Banner" src="https://github.com/user-attachments/assets/16e48401-83bb-46b4-a40d-b850d13b0464" />
 
-> A modern sports facility booking platform — discover, filter, and reserve premium football turfs, badminton courts, and arenas near you.
+<div align="center">
+  <h1>🏟️ TurfZone — Sports Facility Booking System</h1>
+  <p><em>Discover, filter, and reserve premium sports venues — real-time slot booking in seconds.</em></p>
 
+  ![Next.js](https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=next.js&logoColor=white)
+  ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+  ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+  ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  ![HeroUI](https://img.shields.io/badge/HeroUI-000000?style=for-the-badge&logo=heroicons&logoColor=white)
+  ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+  ![BetterAuth](https://img.shields.io/badge/BetterAuth-black?style=for-the-badge&logo=auth0&logoColor=white)
+</div>
+
+<hr/>
 ---
 
 ## 🔗 Live URL
