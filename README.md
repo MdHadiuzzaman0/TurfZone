@@ -14,17 +14,15 @@
 </div>
 
 <hr/>
----
 
+## 📌 Overview
+
+TurfZone is a full-stack web application that allows sports enthusiasts to browse and book local sports facilities with ease. Facility owners can list, manage, and update their venues — while users can search, filter, and book slots in real time.
+
+---
 ## 🔗 Live URL
 
 **Link:** https://turf-zone-ruby.vercel.app/
-
----
-
-## 📌 Purpose
-
-TurfZone is a full-stack web application that allows sports enthusiasts to browse and book local sports facilities with ease. Facility owners can list, manage, and update their venues — while users can search, filter, and book slots in real time.
 
 ---
 
